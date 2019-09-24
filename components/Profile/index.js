@@ -7,10 +7,7 @@ const Profile = () => {
   return (
     <Card>
       <CardItem>
-        <Button
-          danger
-          onPress={() => alert("You need to implement Logout n00b...")}
-        >
+        <Button danger onPress={() => authStore.logout(navigation)}>
           <Text>Logout</Text>
         </Button>
       </CardItem>
