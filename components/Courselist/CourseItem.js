@@ -10,8 +10,9 @@ import {
   Right,
   Button
 } from "native-base";
+import languagecourse from "../../stores/Coursestores";
 
-const CourseItem = ({ navigation }) => {
+const CourseItem = ({ navigation, language }) => {
   const handlePress = () => {
     navigation.navigate("courseDetail", {
       languageID: language.id,
@@ -21,14 +22,12 @@ const CourseItem = ({ navigation }) => {
 
   return (
     <ListItem thumbnail onPress={handlePress}>
-      <Left>
-        <Thumbnail square source={{ uri: language.img }} />
-      </Left>
+      {/* <Left>
+        <Thumbnail square source={{ uri: language.logo }} />
+      </Left> */}
       <Body>
         <Text>language.title</Text>
-        <Text note numberOfLines={1}>
-          Its time to build a difference . .
-        </Text>
+        <Text note numberOfLines={1}></Text>
       </Body>
       <Right>
         <Button transparent>

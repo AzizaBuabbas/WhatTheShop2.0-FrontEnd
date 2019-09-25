@@ -1,17 +1,21 @@
-import React, { Component } from "./node_modules/react";
-import { observer } from "./node_modules/mobx-react";
+import React, { Component } from "react";
+import { observer } from "mobx-react";
 
 import { Container, Content } from "native-base";
 
 import CourseStore from "../../stores/Coursestores";
 import CourseItem from "./CourseItem";
+import languagecourse from "../../stores/Coursestores";
 
 const CourseList = () => {
-  const { languages } = CourseStore;
+  componentDidMount = () => {
+    languagecourse.fetchAllLanguageCourses();
+  };
+  const languagecourses = languagecourse.languagecourses;
   let courses;
-  if (languages) {
-    courses = languages.map(language => (
-      <CourseItem langauge={language} key={language.id} />
+  if (languagecourses) {
+    courses = languagecourses.map(language => (
+      <CourseItem langauge={courses} key={language.id} />
     ));
   }
   return (

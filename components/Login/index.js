@@ -14,13 +14,14 @@ class Login extends Component {
   };
 
   render() {
+    const { navigation } = this.props;
     return (
       <Form>
         <Item>
           <Input
             placeholder="Username"
             autoCapitalize="none"
-            onChangeText={username => this.setState({ username })}
+            onChangeText={username => this.setState({ username: username })}
           />
         </Item>
         <Item last>
@@ -31,11 +32,15 @@ class Login extends Component {
             onChangeText={password => this.setState({ password })}
           />
         </Item>
+        <Button full onPress={() => authStore.login(this.state, navigation)}>
+          <Text>Login</Text>
+        </Button>
         <Button
           full
-          onPress={() => alert("You need to implement Login noob...")}
+          warning
+          onPress={() => authStore.signup(this.state, navigation)}
         >
-          <Text>Login</Text>
+          <Text>Regiister</Text>
         </Button>
       </Form>
     );

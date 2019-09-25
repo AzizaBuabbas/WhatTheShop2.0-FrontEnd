@@ -1,5 +1,5 @@
 import { createStackNavigator } from "react-navigation-stack";
-import ListScreen from "../components/CourseList";
+import ListScreen from "../components/Courselist";
 import DetailScreen from "../components/CourseDetail";
 const CourseStack = createStackNavigator(
   {
@@ -7,7 +7,7 @@ const CourseStack = createStackNavigator(
     CourseDetail: DetailScreen
   },
   {
-    initialRouteName: "Course",
+    initialRouteName: "CourseList",
     defaultNavigationOptions: {
       title: "LanguageCourse"
     }

@@ -1,10 +1,10 @@
-import React, { Component } from "./node_modules/react";
+import React, { Component } from "react";
 
 import { withNavigation } from "react-navigation";
 
 import { Card, CardItem, Thumbnail, Text, Left, Body } from "native-base";
 
-import CourseStore from "../../store/CourseStore";
+// import CourseStore from "../../store/CoursesStore";
 
 class CourseDetail extends Component {
   render() {

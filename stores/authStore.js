@@ -25,11 +25,16 @@ class AuthStore {
     }
   };
 
-  signup = async userDate => {
-    try{
-      await instance.post
+  signup = async (userData, history) => {
+    try {
+      const res = await instance.post("register/", userData);
+      const data = res.data;
+      this.setUser(data.token);
+      history.replace("/");
+    } catch (err) {
+      console.error(err.response.data);
     }
-  }
+  };
 
   login = async (userData, navigation) => {
     try {
