@@ -38,10 +38,10 @@ class AuthStore {
 
   login = async (userData, navigation) => {
     try {
-      const res = await instance.post("/api/login/", userData);
+      const res = await instance.post("login/", userData);
       const user = res.data;
       this.setUser(user.access);
-      navigation.push("CourseList");
+      navigation.replace("CourseList");
     } catch (err) {
       console.error(err.response.data);
     }

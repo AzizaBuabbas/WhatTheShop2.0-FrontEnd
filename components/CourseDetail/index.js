@@ -16,6 +16,7 @@ import {
 import { Image } from "react-native";
 
 import CourseStores from "../../stores/CourseStores";
+import cartStore from "../../stores/cartStore";
 
 class CourseDetail extends Component {
   render() {
@@ -49,7 +50,12 @@ class CourseDetail extends Component {
           />
         </CardItem>
         <CardItem>
-          <Button>
+          <Button
+            onPress={() => {
+              cartStore.addItemToCart(language);
+              this.props.navigation.push("CourseCart");
+            }}
+          >
             <Text>{language.price} KD</Text>
           </Button>
         </CardItem>

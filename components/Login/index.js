@@ -10,9 +10,9 @@ import authStore from "../../stores/authStore";
 class Login extends Component {
   state = {
     username: "",
-    password: "",
-    first_name: "",
-    last_name: ""
+    password: ""
+    // first_name: "",
+    // last_name: ""
   };
 
   render() {
@@ -34,7 +34,7 @@ class Login extends Component {
             onChangeText={password => this.setState({ password })}
           />
         </Item>
-        <Item>
+        {/* <Item>
           <Input
             placeholder="first_name"
             autoCapitalize="none"
@@ -47,7 +47,7 @@ class Login extends Component {
             autoCapitalize="none"
             onChangeText={last_name => this.setState({ last_name })}
           />
-        </Item>
+        </Item> */}
         <Button
           full
           onPress={() => authStore.login(this.state, this.props.navigation)}
@@ -57,7 +57,7 @@ class Login extends Component {
         <Button
           full
           warning
-          onPress={() => authStore.signup(this.state, this.props.navigation)}
+          onPress={() => this.props.navigation.replace("Register")}
         >
           <Text>Regiister</Text>
         </Button>
