@@ -1,9 +1,16 @@
 import React from "react";
+import { observer } from "mobx-react";
 
 // NativeBase Components
 import { Card, CardItem, Text, Button } from "native-base";
+import authStore from "../../stores/authStore";
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
+  componentDidMount = () => {
+    if (authStore.user) {
+      () => profileStore.fetchProfile();
+    }
+  };
   return (
     <Card>
       <CardItem>
@@ -14,4 +21,4 @@ const Profile = () => {
     </Card>
   );
 };
-export default Profile;
+export default observer(Profile);

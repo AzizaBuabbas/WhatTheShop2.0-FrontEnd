@@ -10,32 +10,35 @@ import {
   Right,
   Button
 } from "native-base";
-import languagecourse from "../../stores/Coursestores";
 
-const CourseItem = ({ navigation, language }) => {
-  const handlePress = () => {
-    navigation.navigate("courseDetail", {
-      languageID: language.id,
-      languageName: language.name
+class CourseItem extends Component {
+  handlePress = () => {
+    this.props.navigation.navigate("CourseDetail", {
+      languageID: this.props.language.id,
+      languageName: this.props.language.title
     });
   };
 
-  return (
-    <ListItem thumbnail onPress={handlePress}>
-      {/* <Left>
-        <Thumbnail square source={{ uri: language.logo }} />
-      </Left> */}
-      <Body>
-        <Text>language.title</Text>
-        <Text note numberOfLines={1}></Text>
-      </Body>
-      <Right>
-        <Button transparent>
-          <Text>View</Text>
-        </Button>
-      </Right>
-    </ListItem>
-  );
-};
+  render() {
+    const { language } = this.props;
+
+    return (
+      <ListItem thumbnail onPress={this.handlePress}>
+        <Left>
+          <Thumbnail square source={{ uri: language.logo }} />
+        </Left>
+        <Body>
+          <Text>{language.title}</Text>
+          <Text note numberOfLines={1}></Text>
+        </Body>
+        <Right>
+          <Button transparent onPress={this.handlePress}>
+            <Text>View</Text>
+          </Button>
+        </Right>
+      </ListItem>
+    );
+  }
+}
 
 export default withNavigation(CourseItem);

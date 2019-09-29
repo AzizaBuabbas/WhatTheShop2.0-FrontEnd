@@ -4,7 +4,7 @@ import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
 
 const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/"
+  baseURL: "http://127.0.0.1:8000/api/"
 });
 
 class AuthStore {
@@ -25,12 +25,12 @@ class AuthStore {
     }
   };
 
-  signup = async (userData, history) => {
+  signup = async (userData, navigation) => {
     try {
       const res = await instance.post("register/", userData);
       const data = res.data;
       this.setUser(data.token);
-      history.replace("/");
+      navigation.push("CourseList");
     } catch (err) {
       console.error(err.response.data);
     }
@@ -41,14 +41,15 @@ class AuthStore {
       const res = await instance.post("/api/login/", userData);
       const user = res.data;
       this.setUser(user.access);
-      navigation.replace("CourseList");
+      navigation.push("CourseList");
     } catch (err) {
       console.error(err.response.data);
     }
   };
 
-  logout = () => {
+  logout = navigation => {
     this.setUser();
+    navigation.push("Login");
   };
 
   checkForToken = async () => {

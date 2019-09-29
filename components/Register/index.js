@@ -7,7 +7,7 @@ import { Form, Item, Input, Button, Text } from "native-base";
 // Store
 import authStore from "../../stores/authStore";
 
-class Login extends Component {
+class Register extends Component {
   state = {
     username: "",
     password: "",
@@ -48,21 +48,16 @@ class Login extends Component {
             onChangeText={last_name => this.setState({ last_name })}
           />
         </Item>
-        <Button
-          full
-          onPress={() => authStore.login(this.state, this.props.navigation)}
-        >
-          <Text>Login</Text>
-        </Button>
+
         <Button
           full
           warning
           onPress={() => authStore.signup(this.state, this.props.navigation)}
         >
-          <Text>Regiister</Text>
+          <Text>Register</Text>
         </Button>
       </Form>
     );
   }
 }
-export default observer(Login);
+export default observer(Register);

@@ -2,9 +2,20 @@ import React, { Component } from "react";
 
 import { withNavigation } from "react-navigation";
 
-import { Card, CardItem, Thumbnail, Text, Left, Body } from "native-base";
+import {
+  Card,
+  CardItem,
+  Thumbnail,
+  Text,
+  Left,
+  Body,
+  Content,
+  Button
+} from "native-base";
 
-// import CourseStore from "../../store/CoursesStore";
+import { Image } from "react-native";
+
+import CourseStores from "../../stores/CourseStores";
 
 class CourseDetail extends Component {
   render() {
@@ -12,27 +23,38 @@ class CourseDetail extends Component {
     //const navigation = this.props.navigation
     const { languagecourses } = CourseStores;
 
-    if (!language) return <Content />;
     const languageID = navigation.getParam("languageID");
+    console.log("ID", languageID);
     const language = languagecourses.find(
       language => language.id === languageID
     );
+    console.log("language", language);
+    if (!language) return <Content />;
 
     return (
-      <Card>
+      <Card style={{ height: 400 }}>
         <CardItem>
           <Left>
-            <Thumbnail source={{ uri: language.img }} />
+            <Thumbnail source={{ uri: language.logo }} />
             <Body>
-              <Text>{language.name}</Text>
+              <Text>{language.title}</Text>
             </Body>
           </Left>
         </CardItem>
+
         <CardItem cardBody>
           <Image
-            source={{ uri: language.img }}
+            source={{ uri: language.logo }}
             style={{ height: 200, width: null, flex: 1 }}
           />
+        </CardItem>
+        <CardItem>
+          <Button>
+            <Text>{language.price} KD</Text>
+          </Button>
+        </CardItem>
+        <CardItem>
+          <Text style={{ color: "black" }}>{language.course_overview}</Text>
         </CardItem>
       </Card>
     );
